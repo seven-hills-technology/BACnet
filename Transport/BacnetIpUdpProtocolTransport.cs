@@ -80,9 +80,9 @@ namespace System.IO.BACnet
                     _sharedConn.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                     var ep = new IPEndPoint(IPAddress.Any, SharedPort);
                     if (!string.IsNullOrEmpty(_localEndpoint)) ep = new IPEndPoint(IPAddress.Parse(_localEndpoint), SharedPort);
-                    DisableConnReset(_sharedConn);
+                    // DisableConnReset(_sharedConn);
                     _sharedConn.Client.Bind(ep);
-                    _sharedConn.DontFragment = _dontFragment;
+                    // _sharedConn.DontFragment = _dontFragment;
                     Log.Info($"Binded shared {ep} using UDP");
                 }
                 /* This is our own exclusive port. We'll recieve everything sent to this. */
@@ -102,11 +102,11 @@ namespace System.IO.BACnet
                     // minutes ... yes it's like this at least on several systems
                     _exclusiveConn = new UdpClient(ep)
                     {
-                        DontFragment = _dontFragment,
+                        // DontFragment = _dontFragment,
                         EnableBroadcast = true
                     };
 
-                    DisableConnReset(_exclusiveConn);
+                    // DisableConnReset(_exclusiveConn);
                 }
             }
             else
