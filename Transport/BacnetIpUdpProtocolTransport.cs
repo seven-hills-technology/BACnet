@@ -114,9 +114,9 @@ namespace System.IO.BACnet
                 var ep = new IPEndPoint(IPAddress.Any, SharedPort);
                 if (!string.IsNullOrEmpty(_localEndpoint)) ep = new IPEndPoint(IPAddress.Parse(_localEndpoint), SharedPort);
                 _exclusiveConn = new UdpClient { ExclusiveAddressUse = true };
-                DisableConnReset(_exclusiveConn);
+                // DisableConnReset(_exclusiveConn);
                 _exclusiveConn.Client.Bind(ep);
-                _exclusiveConn.DontFragment = _dontFragment;
+                // _exclusiveConn.DontFragment = _dontFragment;
                 _exclusiveConn.EnableBroadcast = true;
                 Log.Info($"Binded exclusively to {ep} using UDP");
             }
