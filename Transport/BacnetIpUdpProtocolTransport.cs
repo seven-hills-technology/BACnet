@@ -142,7 +142,7 @@ namespace System.IO.BACnet
                 _exclusiveConn = new UdpClient { ExclusiveAddressUse = true };
                 DisableConnReset(_exclusiveConn);
                 _exclusiveConn.Client.Bind(ep);
-                _exclusiveConn.DontFragment = _dontFragment;
+                //_exclusiveConn.DontFragment = _dontFragment; //TODO WTF
                 _exclusiveConn.EnableBroadcast = true;
                 Log.Info($"Binded exclusively to {ep} using UDP");
             }
